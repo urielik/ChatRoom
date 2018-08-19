@@ -27,7 +27,7 @@ export class ChatmessageService {
   //     {
   //       Text: 'a',
   //       dateCreate: new Date(),
-  //       idFrom: 1,
+  //       c: 1,
   //       idTo: 2
   //     }
   //   ]
@@ -37,12 +37,13 @@ export class ChatmessageService {
     this.msgRef = db.list('items');
   }
 
-  allMessage(): Observable<MessageModel[]> {
+  allMessage(): Observable<any[]> {
     return this.msgRef.valueChanges();
   }
 
   addMsg(m: MessageModel) {
     alert(m.Text);
-    this.msgRef.push({ content: m });
+    this.msgRef.push({Text: m.Text, dateCreate: new Date(), 
+                      idFrom: 1, idTo: 2} );
   }
 }
