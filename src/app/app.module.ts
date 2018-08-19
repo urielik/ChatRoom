@@ -10,6 +10,19 @@ import { ChatComponent } from './chat/chat.component';
 import { SendComponent } from './send/send.component';
 import {ChatmessageService} from './chatmessage.service'
 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBerJ6R-_VeNiTvtC_t-feYXiY4MTzgx_g",
+  authDomain: "chat-room-814e0.firebaseapp.com",
+  databaseURL: "https://chat-room-814e0.firebaseio.com",
+  projectId: "chat-room-814e0",
+  storageBucket: "chat-room-814e0.appspot.com",
+  messagingSenderId: "1000052297546"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +34,10 @@ import {ChatmessageService} from './chatmessage.service'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
+    
   ],
   providers: [ChatmessageService],
   bootstrap: [AppComponent]

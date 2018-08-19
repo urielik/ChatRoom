@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatmessageService } from '../chatmessage.service';
+import { MessageModel } from '../models/message.model';
 
 @Component({
   selector: 'app-send',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chatmessageService: ChatmessageService) { }
 
   ngOnInit() {
   }
@@ -15,7 +17,10 @@ export class SendComponent implements OnInit {
   getMessages(){
     
   }
-  sendMessage() {
-    alert("hello");                         
+  sendMessage(msgElement) {
+    let m = new MessageModel();
+    m.dateCreate = new Date();
+    m.Text = msgElement.value;
+    this.chatmessageService.addMsg(m)                      
   }
 }
